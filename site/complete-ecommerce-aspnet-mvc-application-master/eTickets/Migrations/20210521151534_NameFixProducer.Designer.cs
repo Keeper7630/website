@@ -10,8 +10,8 @@ using eTickets.Data;
 namespace eTickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210521151534_NameFixProducer")]
-    partial class NameFixProducer
+    [Migration("20210521151534_NameFixGenre")]
+    partial class NameFixGenre
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace eTickets.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("eTickets.Models.Actor", b =>
+            modelBuilder.Entity("eTickets.Models.Member", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,25 +39,25 @@ namespace eTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actors");
+                    b.ToTable("Members");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Member_Town", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("MemberId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
+                    b.Property<int>("TownId")
                         .HasColumnType("int");
 
-                    b.HasKey("ActorId", "MovieId");
+                    b.HasKey("MemberId", "TownId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex("TownId");
 
-                    b.ToTable("Actors_Movies");
+                    b.ToTable("Members_Towns");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Cinema", b =>
+            modelBuilder.Entity("eTickets.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,17 +75,17 @@ namespace eTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinemas");
+                    b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Town", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CinemaId")
+                    b.Property<int>("EventId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -97,7 +97,7 @@ namespace eTickets.Migrations
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MovieCategory")
+                    b.Property<int>("TownCategory")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -106,7 +106,7 @@ namespace eTickets.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("ProducerId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -114,14 +114,14 @@ namespace eTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CinemaId");
+                    b.HasIndex("EventId");
 
-                    b.HasIndex("ProducerId");
+                    b.HasIndex("GenreId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Towns");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Producer", b =>
+            modelBuilder.Entity("eTickets.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -139,65 +139,65 @@ namespace eTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Producers");
+                    b.ToTable("Genres");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Member_Town", b =>
                 {
-                    b.HasOne("eTickets.Models.Actor", "Actor")
-                        .WithMany("Actors_Movies")
-                        .HasForeignKey("ActorId")
+                    b.HasOne("eTickets.Models.Member", "Member")
+                        .WithMany("Members_Towns")
+                        .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eTickets.Models.Movie", "Movie")
-                        .WithMany("Actors_Movies")
-                        .HasForeignKey("MovieId")
+                    b.HasOne("eTickets.Models.Town", "Town")
+                        .WithMany("Members_Towns")
+                        .HasForeignKey("TownId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Actor");
+                    b.Navigation("Member");
 
-                    b.Navigation("Movie");
+                    b.Navigation("Town");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Town", b =>
                 {
-                    b.HasOne("eTickets.Models.Cinema", "Cinema")
-                        .WithMany("Movies")
-                        .HasForeignKey("CinemaId")
+                    b.HasOne("eTickets.Models.Event", "Event")
+                        .WithMany("Towns")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eTickets.Models.Producer", "Producer")
-                        .WithMany("Movies")
-                        .HasForeignKey("ProducerId")
+                    b.HasOne("eTickets.Models.Genre", "Genre")
+                        .WithMany("Towns")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cinema");
+                    b.Navigation("Event");
 
-                    b.Navigation("Producer");
+                    b.Navigation("Genre");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Actor", b =>
+            modelBuilder.Entity("eTickets.Models.Member", b =>
                 {
-                    b.Navigation("Actors_Movies");
+                    b.Navigation("Members_Towns");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Cinema", b =>
+            modelBuilder.Entity("eTickets.Models.Event", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("Towns");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Town", b =>
                 {
-                    b.Navigation("Actors_Movies");
+                    b.Navigation("Members_Towns");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Producer", b =>
+            modelBuilder.Entity("eTickets.Models.Genre", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("Towns");
                 });
 #pragma warning restore 612, 618
         }

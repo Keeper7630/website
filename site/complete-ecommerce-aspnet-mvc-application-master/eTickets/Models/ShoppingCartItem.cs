@@ -11,7 +11,7 @@ namespace eTickets.Models
         [Key]
         public int Id { get; set; }
 
-        public Movie Movie { get; set; }
+        public Town Town { get; set; }
         public int Amount { get; set; }
 
 

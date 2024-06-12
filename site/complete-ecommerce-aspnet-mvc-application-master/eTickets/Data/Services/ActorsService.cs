@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace eTickets.Data.Services
 {
-    public class ActorsService : EntityBaseRepository<Actor>, IActorsService
+    public class MembersService : EntityBaseRepository<Member>, IMembersService
     {
-        public ActorsService(AppDbContext context) : base(context) { }
+        public MembersService(AppDbContext context) : base(context) { }
     }
 }

@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace eTickets.Models
 {
-    public class NewMovieVM
+    public class NewTownVM
     {
         public int Id { get; set; }
 
-        [Display(Name = "Movie name")]
+        [Display(Name = "Town name")]
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [Display(Name = "Movie description")]
+        [Display(Name = "Town description")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
@@ -25,33 +25,33 @@ namespace eTickets.Models
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
 
-        [Display(Name = "Movie poster URL")]
-        [Required(ErrorMessage = "Movie poster URL is required")]
+        [Display(Name = "Town poster URL")]
+        [Required(ErrorMessage = "Town poster URL is required")]
         public string ImageURL { get; set; }
 
-        [Display(Name = "Movie start date")]
+        [Display(Name = "Town start date")]
         [Required(ErrorMessage = "Start date is required")]
         public DateTime StartDate { get; set; }
 
-        [Display(Name = "Movie end date")]
+        [Display(Name = "Town end date")]
         [Required(ErrorMessage = "End date is required")]
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Select a category")]
-        [Required(ErrorMessage = "Movie category is required")]
-        public MovieCategory MovieCategory { get; set; }
+        [Required(ErrorMessage = "Town category is required")]
+        public TownCategory TownCategory { get; set; }
 
         //Relationships
-        [Display(Name = "Select actor(s)")]
-        [Required(ErrorMessage = "Movie actor(s) is required")]
-        public List<int> ActorIds { get; set; }
+        [Display(Name = "Select member(s)")]
+        [Required(ErrorMessage = "Town member(s) is required")]
+        public List<int> MemberIds { get; set; }
 
-        [Display(Name = "Select a cinema")]
-        [Required(ErrorMessage = "Movie cinema is required")]
-        public int CinemaId { get; set; }
+        [Display(Name = "Select a event")]
+        [Required(ErrorMessage = "Town event is required")]
+        public int EventId { get; set; }
 
-        [Display(Name = "Select a producer")]
-        [Required(ErrorMessage = "Movie producer is required")]
-        public int ProducerId { get; set; }
+        [Display(Name = "Select a genre")]
+        [Required(ErrorMessage = "Town genre is required")]
+        public int GenreId { get; set; }
     }
 }

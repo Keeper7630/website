@@ -36,10 +36,10 @@ namespace eTickets
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
             //Services configuration
-            services.AddScoped<IActorsService, ActorsService>();
-            services.AddScoped<IProducersService, ProducersService>();
-            services.AddScoped<ICinemasService, CinemasService>();
-            services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IMembersService, MembersService>();
+            services.AddScoped<IGenresService, GenresService>();
+            services.AddScoped<IEventsService, EventsService>();
+            services.AddScoped<ITownsService, TownsService>();
             services.AddScoped<IOrdersService, OrdersService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -86,7 +86,7 @@ namespace eTickets
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Movies}/{action=Index}/{id?}");
+                    pattern: "{controller=Towns}/{action=Index}/{id?}");
             });
 
             //Seed database

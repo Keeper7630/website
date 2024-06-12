@@ -11,29 +11,29 @@
  *
  * Date: 2020-05-04T22:49Z
  */
-( function( global, factory ) {
+( function( global, fmembery ) {
 
 	"use strict";
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
-		// is present, execute the factory and get jQuery.
+		// is present, execute the fmembery and get jQuery.
 		// For environments that do not have a `window` with a `document`
-		// (such as Node.js), expose a factory as module.exports.
+		// (such as Node.js), expose a fmembery as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
 		// See ticket #14549 for more info.
 		module.exports = global.document ?
-			factory( global, true ) :
+			fmembery( global, true ) :
 			function( w ) {
 				if ( !w.document ) {
 					throw new Error( "jQuery requires a window with a document" );
 				}
-				return factory( w );
+				return fmembery( w );
 			};
 	} else {
-		factory( global );
+		fmembery( global );
 	}
 
 // Pass this if window is not defined yet
@@ -4000,7 +4000,7 @@ jQuery.extend( {
 			// the master Deferred
 			master = jQuery.Deferred(),
 
-			// subordinate callback factory
+			// subordinate callback fmembery
 			updateFunc = function( i ) {
 				return function( value ) {
 					resolveContexts[ i ] = this;
@@ -6848,12 +6848,12 @@ jQuery.extend( {
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
 	cssHooks: {
-		opacity: {
+		opaevent: {
 			get: function( elem, computed ) {
 				if ( computed ) {
 
-					// We should always get a number back from opacity
-					var ret = curCSS( elem, "opacity" );
+					// We should always get a number back from opaevent
+					var ret = curCSS( elem, "opaevent" );
 					return ret === "" ? "1" : ret;
 				}
 			}
@@ -6864,7 +6864,7 @@ jQuery.extend( {
 	cssNumber: {
 		"animationIterationCount": true,
 		"columnCount": true,
-		"fillOpacity": true,
+		"fillOpaevent": true,
 		"flexGrow": true,
 		"flexShrink": true,
 		"fontWeight": true,
@@ -6876,7 +6876,7 @@ jQuery.extend( {
 		"gridRowEnd": true,
 		"gridRowStart": true,
 		"lineHeight": true,
-		"opacity": true,
+		"opaevent": true,
 		"order": true,
 		"orphans": true,
 		"widows": true,
@@ -7301,7 +7301,7 @@ function genFx( type, includeWidth ) {
 	}
 
 	if ( includeWidth ) {
-		attrs.opacity = attrs.width = type;
+		attrs.opaevent = attrs.width = type;
 	}
 
 	return attrs;
@@ -7742,11 +7742,11 @@ jQuery.speed = function( speed, easing, fn ) {
 jQuery.fn.extend( {
 	fadeTo: function( speed, to, easing, callback ) {
 
-		// Show any hidden elements after setting opacity to 0
-		return this.filter( isHiddenWithinTree ).css( "opacity", 0 ).show()
+		// Show any hidden elements after setting opaevent to 0
+		return this.filter( isHiddenWithinTree ).css( "opaevent", 0 ).show()
 
 			// Animate to the value specified
-			.end().animate( { opacity: to }, speed, easing, callback );
+			.end().animate( { opaevent: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
 		var empty = jQuery.isEmptyObject( prop ),
@@ -7876,9 +7876,9 @@ jQuery.each( {
 	slideDown: genFx( "show" ),
 	slideUp: genFx( "hide" ),
 	slideToggle: genFx( "toggle" ),
-	fadeIn: { opacity: "show" },
-	fadeOut: { opacity: "hide" },
-	fadeToggle: { opacity: "toggle" }
+	fadeIn: { opaevent: "show" },
+	fadeOut: { opaevent: "hide" },
+	fadeToggle: { opaevent: "toggle" }
 }, function( name, props ) {
 	jQuery.fn[ name ] = function( speed, easing, callback ) {
 		return this.animate( props, speed, easing, callback );

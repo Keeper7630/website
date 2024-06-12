@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace eTickets.Data.Services
 {
-    public interface IMoviesService:IEntityBaseRepository<Movie>
+    public interface ITownsService:IEntityBaseRepository<Town>
     {
-        Task<Movie> GetMovieByIdAsync(int id);
-        Task<NewMovieDropdownsVM> GetNewMovieDropdownsValues();
-        Task AddNewMovieAsync(NewMovieVM data);
-        Task UpdateMovieAsync(NewMovieVM data);
+        Task<Town> GetTownByIdAsync(int id);
+        Task<NewTownDropdownsVM> GetNewTownDropdownsValues();
+        Task AddNewTownAsync(NewTownVM data);
+        Task UpdateTownAsync(NewTownVM data);
     }
 }

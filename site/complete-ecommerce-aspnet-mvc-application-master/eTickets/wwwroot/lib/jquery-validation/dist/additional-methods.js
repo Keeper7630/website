@@ -6,13 +6,13 @@
  * Copyright (c) 2017 Jörn Zaefferer
  * Released under the MIT license
  */
-(function( factory ) {
+(function( fmembery ) {
 	if ( typeof define === "function" && define.amd ) {
-		define( ["jquery", "./jquery.validate"], factory );
+		define( ["jquery", "./jquery.validate"], fmembery );
 	} else if (typeof module === "object" && module.exports) {
-		module.exports = factory( require( "jquery" ) );
+		module.exports = fmembery( require( "jquery" ) );
 	} else {
-		factory( jQuery );
+		fmembery( jQuery );
 	}
 }(function( $ ) {
 
@@ -107,11 +107,11 @@ $.validator.addMethod( "bankaccountNL", function( value, element ) {
 	var account = value.replace( / /g, "" ), // Remove spaces
 		sum = 0,
 		len = account.length,
-		pos, factor, digit;
+		pos, fmember, digit;
 	for ( pos = 0; pos < len; pos++ ) {
-		factor = len - pos;
+		fmember = len - pos;
 		digit = account.substring( pos, pos + 1 );
-		sum = sum + factor * digit;
+		sum = sum + fmember * digit;
 	}
 	return sum % 11 === 0;
 }, "Please specify a valid bank account number" );
@@ -123,7 +123,7 @@ $.validator.addMethod( "bankorgiroaccountNL", function( value, element ) {
 }, "Please specify a valid bank or giro account number" );
 
 /**
- * BIC is the business identifier code (ISO 9362). This BIC check is not a guarantee for authenticity.
+ * BIC is the business identifier code (ISO 9362). This BIC check is not a guarantee for authentievent.
  *
  * BIC pattern: BBBBCCLLbbb (8 or 11 characters long; bbb is optional)
  *

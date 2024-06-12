@@ -9,99 +9,99 @@ using System.Threading.Tasks;
 
 namespace eTickets.Data.Services
 {
-    public class MoviesService : EntityBaseRepository<Movie>, IMoviesService
+    public class TownsService : EntityBaseRepository<Town>, ITownsService
     {
         private readonly AppDbContext _context;
-        public MoviesService(AppDbContext context) : base(context)
+        public TownsService(AppDbContext context) : base(context)
         {
             _context = context;
         }
 
-        public async Task AddNewMovieAsync(NewMovieVM data)
+        public async Task AddNewTownAsync(NewTownVM data)
         {
-            var newMovie = new Movie()
+            var newTown = new Town()
             {
                 Name = data.Name,
                 Description = data.Description,
                 Price = data.Price,
                 ImageURL = data.ImageURL,
-                CinemaId = data.CinemaId,
+                EventId = data.EventId,
                 StartDate = data.StartDate,
                 EndDate = data.EndDate,
-                MovieCategory = data.MovieCategory,
-                ProducerId = data.ProducerId
+                TownCategory = data.TownCategory,
+                GenreId = data.GenreId
             };
-            await _context.Movies.AddAsync(newMovie);
+            await _context.Towns.AddAsync(newTown);
             await _context.SaveChangesAsync();
 
-            //Add Movie Actors
-            foreach (var actorId in data.ActorIds)
+            //Add Town Members
+            foreach (var memberId in data.MemberIds)
             {
-                var newActorMovie = new Actor_Movie()
+                var newMemberTown = new Member_Town()
                 {
-                    MovieId = newMovie.Id,
-                    ActorId = actorId
+                    TownId = newTown.Id,
+                    MemberId = memberId
                 };
-                await _context.Actors_Movies.AddAsync(newActorMovie);
+                await _context.Members_Towns.AddAsync(newMemberTown);
             }
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Movie> GetMovieByIdAsync(int id)
+        public async Task<Town> GetTownByIdAsync(int id)
         {
-            var movieDetails = await _context.Movies
-                .Include(c => c.Cinema)
-                .Include(p => p.Producer)
-                .Include(am => am.Actors_Movies).ThenInclude(a => a.Actor)
+            var townDetails = await _context.Towns
+                .Include(c => c.Event)
+                .Include(p => p.Genre)
+                .Include(am => am.Members_Towns).ThenInclude(a => a.Member)
                 .FirstOrDefaultAsync(n => n.Id == id);
 
-            return movieDetails;
+            return townDetails;
         }
 
-        public async Task<NewMovieDropdownsVM> GetNewMovieDropdownsValues()
+        public async Task<NewTownDropdownsVM> GetNewTownDropdownsValues()
         {
-            var response = new NewMovieDropdownsVM()
+            var response = new NewTownDropdownsVM()
             {
-                Actors = await _context.Actors.OrderBy(n => n.FullName).ToListAsync(),
-                Cinemas = await _context.Cinemas.OrderBy(n => n.Name).ToListAsync(),
-                Producers = await _context.Producers.OrderBy(n => n.FullName).ToListAsync()
+                Members = await _context.Members.OrderBy(n => n.FullName).ToListAsync(),
+                Events = await _context.Events.OrderBy(n => n.Name).ToListAsync(),
+                Genres = await _context.Genres.OrderBy(n => n.FullName).ToListAsync()
             };
 
             return response;
         }
 
-        public async Task UpdateMovieAsync(NewMovieVM data)
+        public async Task UpdateTownAsync(NewTownVM data)
         {
-            var dbMovie = await _context.Movies.FirstOrDefaultAsync(n => n.Id == data.Id);
+            var dbTown = await _context.Towns.FirstOrDefaultAsync(n => n.Id == data.Id);
 
-            if(dbMovie != null)
+            if(dbTown != null)
             {
-                dbMovie.Name = data.Name;
-                dbMovie.Description = data.Description;
-                dbMovie.Price = data.Price;
-                dbMovie.ImageURL = data.ImageURL;
-                dbMovie.CinemaId = data.CinemaId;
-                dbMovie.StartDate = data.StartDate;
-                dbMovie.EndDate = data.EndDate;
-                dbMovie.MovieCategory = data.MovieCategory;
-                dbMovie.ProducerId = data.ProducerId;
+                dbTown.Name = data.Name;
+                dbTown.Description = data.Description;
+                dbTown.Price = data.Price;
+                dbTown.ImageURL = data.ImageURL;
+                dbTown.EventId = data.EventId;
+                dbTown.StartDate = data.StartDate;
+                dbTown.EndDate = data.EndDate;
+                dbTown.TownCategory = data.TownCategory;
+                dbTown.GenreId = data.GenreId;
                 await _context.SaveChangesAsync();
             }
 
-            //Remove existing actors
-            var existingActorsDb = _context.Actors_Movies.Where(n => n.MovieId == data.Id).ToList();
-            _context.Actors_Movies.RemoveRange(existingActorsDb);
+            //Remove existing members
+            var existingMembersDb = _context.Members_Towns.Where(n => n.TownId == data.Id).ToList();
+            _context.Members_Towns.RemoveRange(existingMembersDb);
             await _context.SaveChangesAsync();
 
-            //Add Movie Actors
-            foreach (var actorId in data.ActorIds)
+            //Add Town Members
+            foreach (var memberId in data.MemberIds)
             {
-                var newActorMovie = new Actor_Movie()
+                var newMemberTown = new Member_Town()
                 {
-                    MovieId = data.Id,
-                    ActorId = actorId
+                    TownId = data.Id,
+                    MemberId = memberId
                 };
-                await _context.Actors_Movies.AddAsync(newActorMovie);
+                await _context.Members_Towns.AddAsync(newMemberTown);
             }
             await _context.SaveChangesAsync();
         }

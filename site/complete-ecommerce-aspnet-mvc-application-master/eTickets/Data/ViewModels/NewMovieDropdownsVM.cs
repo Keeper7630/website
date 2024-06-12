@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace eTickets.Data.ViewModels
 {
-    public class NewMovieDropdownsVM
+    public class NewTownDropdownsVM
     {
-        public NewMovieDropdownsVM()
+        public NewTownDropdownsVM()
         {
-            Producers = new List<Producer>();
-            Cinemas = new List<Cinema>();
-            Actors = new List<Actor>();
+            Genres = new List<Genre>();
+            Events = new List<Event>();
+            Members = new List<Member>();
         }
 
-        public List<Producer> Producers { get; set; }
-        public List<Cinema> Cinemas { get; set; }
-        public List<Actor> Actors { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<Event> Events { get; set; }
+        public List<Member> Members { get; set; }
     }
 }
