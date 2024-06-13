@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Town>
 
 @{
-    ViewData["Title"] = "List of Towns";
+    ViewData["Title"] = "Blackwire Band";
 }
 
 <div class="row">
@@ -34,7 +34,7 @@
                             <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
                             <p class="card-text"><b>End Date: </b>@item.StartTime.ToString(@"hh\:mm\:ss")</p>
                             <p class="card-text ">
-                                <b>Status: </b>
+                                <b>В наличии: </b>
                                 @if (DateTime.Now < item.StartDate)
                                 {
                                     <span class="badge bg-success text-white">ДА</span>
