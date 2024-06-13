@@ -37,8 +37,6 @@ namespace eTickets.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                //var filteredResult = allTowns.Where(n => n.Name.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
-
                 var filteredResultNew = allTowns.Where(n => string.Equals(n.Name, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Description, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
                 return View("Index", filteredResultNew);
@@ -99,7 +97,7 @@ namespace eTickets.Controllers
                 Description = townDetails.Description,
                 Price = townDetails.Price,
                 StartDate = townDetails.StartDate,
-                EndDate = townDetails.EndDate,
+                StartTime = townDetails.StartTime,
                 ImageURL = townDetails.ImageURL,
                 TownCategory = townDetails.TownCategory,
                 EventId = townDetails.EventId,

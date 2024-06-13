@@ -35,7 +35,6 @@ namespace eTickets.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
-
         //Orders related tables
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }

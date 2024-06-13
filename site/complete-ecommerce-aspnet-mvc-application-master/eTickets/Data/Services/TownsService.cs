@@ -27,7 +27,7 @@ namespace eTickets.Data.Services
                 ImageURL = data.ImageURL,
                 EventId = data.EventId,
                 StartDate = data.StartDate,
-                EndDate = data.EndDate,
+                StartTime = data.StartTime,
                 TownCategory = data.TownCategory,
                 GenreId = data.GenreId
             };
@@ -82,7 +82,7 @@ namespace eTickets.Data.Services
                 dbTown.ImageURL = data.ImageURL;
                 dbTown.EventId = data.EventId;
                 dbTown.StartDate = data.StartDate;
-                dbTown.EndDate = data.EndDate;
+                dbTown.StartTime = data.StartTime;
                 dbTown.TownCategory = data.TownCategory;
                 dbTown.GenreId = data.GenreId;
                 await _context.SaveChangesAsync();

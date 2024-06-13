@@ -32,20 +32,16 @@
                             <p class="card-text"><b>Event: </b>@item.Event.Name</p>
                             <p class="card-text"><b>Category: </b>@item.TownCategory</p>
                             <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
-                            <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>End Date: </b>@item.StartTime.ToString(@"hh\:mm\:ss")</p>
                             <p class="card-text ">
                                 <b>Status: </b>
-                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                @if (DateTime.Now < item.StartDate)
                                 {
-                                    <span class="badge bg-success text-white">AVAILABLE</span>
-                                }
-                                else if (DateTime.Now > item.EndDate)
-                                {
-                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                    <span class="badge bg-success text-white">ДА</span>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-primary text-white">UPCOMING</span>
+                                    <span class="badge bg-danger text-white">НЕТ</span>
                                 }
                             </p>
 
@@ -57,7 +53,7 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")" 
+                                <a class="btn btn-success text-white @((DateTime.Now >= item.StartDate) ? "disabled" : "")" 
                                    asp-controller="Orders" 
                                    asp-action="AddItemToShoppingCart" 
                                    asp-route-id="@item.Id">

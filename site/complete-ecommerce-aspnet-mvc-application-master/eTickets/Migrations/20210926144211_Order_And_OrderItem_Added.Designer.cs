@@ -98,8 +98,8 @@ namespace eTickets.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");

@@ -63,7 +63,7 @@ namespace eTickets.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     TownCategory = table.Column<int>(type: "int", nullable: false),
                     EventId = table.Column<int>(type: "int", nullable: false),
                     GenreId = table.Column<int>(type: "int", nullable: false)

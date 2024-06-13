@@ -33,9 +33,9 @@ namespace eTickets.Models
         [Required(ErrorMessage = "Start date is required")]
         public DateTime StartDate { get; set; }
 
-        [Display(Name = "Town end date")]
-        [Required(ErrorMessage = "End date is required")]
-        public DateTime EndDate { get; set; }
+        [Display(Name = "Town start time")]
+        [Required(ErrorMessage = "Start time is required")]
+        public TimeSpan StartTime { get; set; }
 
         [Display(Name = "Select a category")]
         [Required(ErrorMessage = "Town category is required")]

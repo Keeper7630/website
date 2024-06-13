@@ -145,10 +145,10 @@ namespace eTickets.Data
                         {
                             Name = "Life",
                             Description = "This is the Life town description",
-                            Price = 39.50,
+                            Price = 2500,
                             ImageURL = "http://dotnethow.net/images/towns/town-3.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(10),
+                            StartTime = new TimeSpan(21, 0, 0),
                             EventId = 3,
                             GenreId = 3,
                             TownCategory = TownCategory.Documentary
@@ -157,10 +157,10 @@ namespace eTickets.Data
                         {
                             Name = "The Shawshank Redemption",
                             Description = "This is the Shawshank Redemption description",
-                            Price = 29.50,
+                            Price = 2500,
                             ImageURL = "http://dotnethow.net/images/towns/town-1.jpeg",
                             StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(3),
+                            StartTime = new TimeSpan(21, 0, 0),
                             EventId = 1,
                             GenreId = 1,
                             TownCategory = TownCategory.Action
@@ -169,10 +169,10 @@ namespace eTickets.Data
                         {
                             Name = "Ghost",
                             Description = "This is the Ghost town description",
-                            Price = 39.50,
+                            Price = 2300,
                             ImageURL = "http://dotnethow.net/images/towns/town-4.jpeg",
                             StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(7),
+                            StartTime = new TimeSpan(19, 0, 0),
                             EventId = 4,
                             GenreId = 4,
                             TownCategory = TownCategory.Horror
@@ -181,10 +181,10 @@ namespace eTickets.Data
                         {
                             Name = "Race",
                             Description = "This is the Race town description",
-                            Price = 39.50,
+                            Price = 2000,
                             ImageURL = "http://dotnethow.net/images/towns/town-6.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-5),
+                            StartTime = new TimeSpan(20, 0, 0),
                             EventId = 1,
                             GenreId = 2,
                             TownCategory = TownCategory.Documentary
@@ -193,10 +193,10 @@ namespace eTickets.Data
                         {
                             Name = "Scoob",
                             Description = "This is the Scoob town description",
-                            Price = 39.50,
+                            Price = 2200,
                             ImageURL = "http://dotnethow.net/images/towns/town-7.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-2),
+                            StartTime = new TimeSpan(18, 0, 0),
                             EventId = 1,
                             GenreId = 3,
                             TownCategory = TownCategory.Cartoon
@@ -205,10 +205,10 @@ namespace eTickets.Data
                         {
                             Name = "Cold Soles",
                             Description = "This is the Cold Soles town description",
-                            Price = 39.50,
+                            Price = 1800,
                             ImageURL = "http://dotnethow.net/images/towns/town-8.jpeg",
                             StartDate = DateTime.Now.AddDays(3),
-                            EndDate = DateTime.Now.AddDays(20),
+                            StartTime = new TimeSpan(20, 0, 0),
                             EventId = 1,
                             GenreId = 5,
                             TownCategory = TownCategory.Drama
