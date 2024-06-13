@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace eTickets.Data
 {
-    public enum TownCategory
-    {
-        Action = 1,
-        Comedy,
-        Drama,
-        Documentary,
-        Cartoon,
-        Horror
-    }
+        public enum TownCategory
+        {
+            cat_21 = 1,
+            cat_18,
+            cat_16
+        }
 }

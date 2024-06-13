@@ -25,24 +25,21 @@
                         <p class="card-text">@Model.Description</p>
                         <p class="card-text">
                             <b>Мероприятие: </b>
-                            <a asp-controller="Cinemas" asp-action="Details" asp-route-id="@Model.CinemaId">
-                                @Model.Cinema.Name
-                            <b>Event: </b>
                             <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.EventId">
                                 @Model.Event.Name
                             </a>
                         </p>
                         <p class="card-text">
-                            <b>Genre: </b>
+                            <b>Жанр: </b>
                             <a asp-controller="Genres" asp-action="Details" asp-route-id="@Model.GenreId">
                                 @Model.Genre.FullName
                             </a>
                         </p>
-                        <p class="card-text"><b>Category: </b>@Model.TownCategory</p>
-                        <p class="card-text"><b>Start Date: </b>@Model.StartDate.ToString("dd MMM yy")</p>
-                        <p class="card-text"><b>End Date: </b>@Model.StartTime.ToString(@"hh\:mm\:ss")</p>
+                        <p class="card-text"><b>Возрастное ограничение: </b>@Model.TownCategory</p>
+                        <p class="card-text"><b>Дата начала: </b>@Model.StartDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Время начала: </b>@Model.StartTime.ToString(@"hh\:mm\:ss")</p>
                         <p class="card-text ">
-                            <b>Status: </b>
+                            <b>В наличии: </b>
                             @if (DateTime.Now < Model.StartDate)
                             {
                                 <span class="badge bg-success text-white">ДА</span>
@@ -53,7 +50,7 @@
                             }
                         </p>
                         <p class="card-text">
-                            <b>Members: </b>
+                            <b>Участники: </b>
                             <hr />
                             <div class="row">
                                 @foreach (var member in Model.Members_Towns)

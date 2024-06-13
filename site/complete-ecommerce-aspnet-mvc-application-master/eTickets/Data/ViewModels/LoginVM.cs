@@ -12,7 +12,8 @@ namespace eTickets.Data.ViewModels
         [Required(ErrorMessage = "Требуется адрес электронной почты")]
         public string EmailAddress { get; set; }
 
-        [Required]
+        [Display(Name = "Пароль")]
+        [Required(ErrorMessage = "Требуется пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

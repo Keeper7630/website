@@ -52,11 +52,11 @@ namespace eTickets.Controllers
                         return RedirectToAction("Index", "Towns");
                     }
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                TempData["Error"] = "Неверные данные. Пожалуйста, попробуйте ещё раз!";
                 return View(loginVM);
             }
 
-            TempData["Error"] = "Wrong credentials. Please, try again!";
+            TempData["Error"] = "Неверные данные. Пожалуйста, попробуйте ещё раз!";
             return View(loginVM);
         }
 

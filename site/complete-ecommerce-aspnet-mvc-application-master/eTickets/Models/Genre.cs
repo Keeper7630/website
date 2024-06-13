@@ -21,8 +21,8 @@ namespace eTickets.Models
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Имя должно содержать от 3 до 50 символов")]
         public string FullName { get; set; }
 
-        [Display(Name = "Биография")]
-        [Required(ErrorMessage = "Требуется ввести биографию")]
+        [Display(Name = "Описание")]
+        [Required(ErrorMessage = "Требуется ввести описание")]
         public string Bio { get; set; }
 
         //Relationships

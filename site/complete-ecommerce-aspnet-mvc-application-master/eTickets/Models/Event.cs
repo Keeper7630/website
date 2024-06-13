@@ -12,16 +12,16 @@ namespace eTickets.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Event Logo")]
-        [Required(ErrorMessage = "Event logo is required")]
+        [Display(Name = "Лого мероприятия")]
+        [Required(ErrorMessage = "Требуется лого мероприятия")]
         public string Logo { get; set; }
 
-        [Display(Name = "Event Name")]
-        [Required(ErrorMessage = "Event name is required")]
+        [Display(Name = "Название мероприятия")]
+        [Required(ErrorMessage = "Требуется название мероприятия")]
         public string Name { get; set; }
 
-        [Display(Name = "Description")]
-        [Required(ErrorMessage = "Event description is required")]
+        [Display(Name = "Описание")]
+        [Required(ErrorMessage = "Требуется описание мероприятия")]
         public string Description { get; set; }
 
         //Relationships

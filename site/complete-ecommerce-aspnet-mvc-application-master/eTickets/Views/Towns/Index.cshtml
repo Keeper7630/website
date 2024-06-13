@@ -29,10 +29,10 @@
                     <div class="col-md-6">
                         <div class="card-body">
                             <p class="card-text">@item.Description</p>
-                            <p class="card-text"><b>Event: </b>@item.Event.Name</p>
-                            <p class="card-text"><b>Category: </b>@item.TownCategory</p>
-                            <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
-                            <p class="card-text"><b>End Date: </b>@item.StartTime.ToString(@"hh\:mm\:ss")</p>
+                            <p class="card-text"><b>Мероприятие: </b>@item.Event.Name</p>
+                            <p class="card-text"><b>Возрастное ограничение: </b>@item.TownCategory</p>
+                            <p class="card-text"><b>Дата начала: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>Время начала: </b>@item.StartTime.ToString(@"hh\:mm\:ss")</p>
                             <p class="card-text ">
                                 <b>В наличии: </b>
                                 @if (DateTime.Now < item.StartDate)
@@ -51,13 +51,13 @@
                         <div class="card-footer ">
                             <p class="card-text">
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
+                                    <i class="bi bi-eye-fill"></i> Подробнее
                                 </a>
                                 <a class="btn btn-success text-white @((DateTime.Now >= item.StartDate) ? "disabled" : "")" 
                                    asp-controller="Orders" 
                                    asp-action="AddItemToShoppingCart" 
                                    asp-route-id="@item.Id">
-                                <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
+                                <i class="bi bi-cart-plus"></i> Добавить в корзину (Цена @item.Price.ToString("c"))</a>
                             </p>
                         </div>
                     </div>

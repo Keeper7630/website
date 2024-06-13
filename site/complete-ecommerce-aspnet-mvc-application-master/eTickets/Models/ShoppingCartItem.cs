@@ -14,7 +14,6 @@ namespace eTickets.Models
         public Town Town { get; set; }
         public int Amount { get; set; }
 
-
         public string ShoppingCartId { get; set; }
     }
 }

@@ -13,45 +13,45 @@ namespace eTickets.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Town name")]
-        [Required(ErrorMessage = "Name is required")]
+        [Display(Name = "Название города")]
+        [Required(ErrorMessage = "Требуется имя")]
         public string Name { get; set; }
 
-        [Display(Name = "Town description")]
-        [Required(ErrorMessage = "Description is required")]
+        [Display(Name = "Описание города")]
+        [Required(ErrorMessage = "Требуется описание")]
         public string Description { get; set; }
 
-        [Display(Name = "Price in $")]
-        [Required(ErrorMessage = "Price is required")]
+        [Display(Name = "Цена в рублях")]
+        [Required(ErrorMessage = "Требуется цена")]
         public double Price { get; set; }
 
-        [Display(Name = "Town poster URL")]
-        [Required(ErrorMessage = "Town poster URL is required")]
+        [Display(Name = "Изображение города URL")]
+        [Required(ErrorMessage = "Требуется URL изображения города")]
         public string ImageURL { get; set; }
 
-        [Display(Name = "Town start date")]
-        [Required(ErrorMessage = "Start date is required")]
+        [Display(Name = "Дата начала")]
+        [Required(ErrorMessage = "Требуется дата начала")]
         public DateTime StartDate { get; set; }
 
-        [Display(Name = "Town start time")]
-        [Required(ErrorMessage = "Start time is required")]
+        [Display(Name = "Время начала")]
+        [Required(ErrorMessage = "Требуется время начала")]
         public TimeSpan StartTime { get; set; }
 
-        [Display(Name = "Select a category")]
-        [Required(ErrorMessage = "Town category is required")]
+        [Display(Name = "Выберите возрастное ограничение")]
+        [Required(ErrorMessage = "Требуется возрастное ограничение")]
         public TownCategory TownCategory { get; set; }
 
         //Relationships
-        [Display(Name = "Select member(s)")]
-        [Required(ErrorMessage = "Town member(s) is required")]
+        [Display(Name = "Выберите участника(ов)")]
+        [Required(ErrorMessage = "Требуются участники")]
         public List<int> MemberIds { get; set; }
 
-        [Display(Name = "Select a event")]
-        [Required(ErrorMessage = "Town event is required")]
+        [Display(Name = "Выберите мероприятие")]
+        [Required(ErrorMessage = "Требуется мероприятие")]
         public int EventId { get; set; }
 
-        [Display(Name = "Select a genre")]
-        [Required(ErrorMessage = "Town genre is required")]
+        [Display(Name = "Выберите жанр")]
+        [Required(ErrorMessage = "Требуется жанр")]
         public int GenreId { get; set; }
     }
 }

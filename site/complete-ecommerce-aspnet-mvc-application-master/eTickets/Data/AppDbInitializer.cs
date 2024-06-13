@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace eTickets.Data
 {
@@ -27,33 +28,21 @@ namespace eTickets.Data
                     {
                         new Event()
                         {
-                            Name = "Event 1",
-                            Logo = "http://dotnethow.net/images/events/event-1.jpeg",
-                            Description = "This is the description of the first event"
+                            Name = "Концерт",
+                            Logo = "https://i.postimg.cc/9MwW1pY6/image.jpg",
+                            Description = "Публичное исполнение музыкальных произведений по определённой, заранее составленной, программе."
                         },
                         new Event()
                         {
-                            Name = "Event 2",
-                            Logo = "http://dotnethow.net/images/events/event-2.jpeg",
-                            Description = "This is the description of the first event"
+                            Name = "Акустический концерт",
+                            Logo = "https://i.postimg.cc/Qt73cMXs/image.jpg",
+                            Description = "Концерт, в котором звучит только музыка, которую можно воспроизвести с помощью акустических инструментов или живого голоса."
                         },
                         new Event()
                         {
-                            Name = "Event 3",
-                            Logo = "http://dotnethow.net/images/events/event-3.jpeg",
-                            Description = "This is the description of the first event"
-                        },
-                        new Event()
-                        {
-                            Name = "Event 4",
-                            Logo = "http://dotnethow.net/images/events/event-4.jpeg",
-                            Description = "This is the description of the first event"
-                        },
-                        new Event()
-                        {
-                            Name = "Event 5",
-                            Logo = "http://dotnethow.net/images/events/event-5.jpeg",
-                            Description = "This is the description of the first event"
+                            Name = "Фестиваль",
+                            Logo = "https://i.postimg.cc/52PbVG7c/image.jpg",
+                            Description = "Мероприятие, ориентированное на проведение различных музыкальных выступлений и демонстрацию инструментального мастерства."
                         },
                     });
                     context.SaveChanges();
@@ -65,35 +54,35 @@ namespace eTickets.Data
                     {
                         new Member()
                         {
-                            FullName = "Member 1",
-                            Bio = "This is the Bio of the first member",
-                            ProfilePictureURL = "http://dotnethow.net/images/members/member-1.jpeg"
+                            FullName = "Мануилиди Мария",
+                            Bio = "Ритм/лид гитарист, играет 5 лет. Основатель группы Blackwire.",
+                            ProfilePictureURL = "https://i.postimg.cc/RFKHGwwY/msg730438509-27716.jpg"
 
                         },
                         new Member()
                         {
-                            FullName = "Member 2",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/members/member-2.jpeg"
+                            FullName = "Капулер Дмитрий",
+                            Bio = "Клавишник, опыт игры - 5 лет. Частный преподаватель фортепиано.",
+                            ProfilePictureURL = "https://i.postimg.cc/brd1m4Bz/image.jpg"
                         },
                         new Member()
                         {
-                            FullName = "Member 3",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/members/member-3.jpeg"
+                            FullName = "Денисова Дарья",
+                            Bio = "Барабанщица, играет 4 года.",
+                            ProfilePictureURL = "https://i.postimg.cc/tTBht9DS/image.jpg"
                         },
                         new Member()
                         {
-                            FullName = "Member 4",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/members/member-4.jpeg"
+                            FullName = "Едина Млада",
+                            Bio = "Бас-гитарист, играет 3 года. Новый участник группы.",
+                            ProfilePictureURL = "https://i.postimg.cc/nVdkqGPF/image.jpg"
                         },
                         new Member()
                         {
-                            FullName = "Member 5",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/members/member-5.jpeg"
-                        }
+                            FullName = "Мартиросян Карина",
+                            Bio = "Сессионный вокалист, близкий друг группы.",
+                            ProfilePictureURL = "https://i.postimg.cc/bNsRgS7Q/image.jpg"
+                        },
                     });
                     context.SaveChanges();
                 }
@@ -104,35 +93,23 @@ namespace eTickets.Data
                     {
                         new Genre()
                         {
-                            FullName = "Genre 1",
-                            Bio = "This is the Bio of the first member",
-                            ProfilePictureURL = "http://dotnethow.net/images/genres/genre-1.jpeg"
+                            FullName = "Рок",
+                            Bio = "Ряд направлений популярной музыки",
+                            ProfilePictureURL = "https://i.postimg.cc/3RTrwpTm/image.jpg"
 
                         },
                         new Genre()
                         {
-                            FullName = "Genre 2",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/genres/genre-2.jpeg"
+                            FullName = "Инди-рок",
+                            Bio = "Широкий диапазон музыкантов и стилей, объединённых причастностью к контркультуре и имеющих отношение к рок-музыке.",
+                            ProfilePictureURL = "https://i.postimg.cc/k5x9L4b4/image.jpg"
                         },
                         new Genre()
                         {
-                            FullName = "Genre 3",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/genres/genre-3.jpeg"
+                            FullName = "Экспериментальная музыка",
+                            Bio = "Музыкальные произведения, использующие необычный инструментарий или новые композиционные принципы.",
+                            ProfilePictureURL = "https://i.postimg.cc/xT0kRwBM/image.jpg"
                         },
-                        new Genre()
-                        {
-                            FullName = "Genre 4",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/genres/genre-4.jpeg"
-                        },
-                        new Genre()
-                        {
-                            FullName = "Genre 5",
-                            Bio = "This is the Bio of the second member",
-                            ProfilePictureURL = "http://dotnethow.net/images/genres/genre-5.jpeg"
-                        }
                     });
                     context.SaveChanges();
                 }
@@ -143,75 +120,75 @@ namespace eTickets.Data
                     {
                         new Town()
                         {
-                            Name = "Life",
-                            Description = "This is the Life town description",
+                            Name = "Москва",
+                            Description = "просп. Андропова 1",
                             Price = 2500,
-                            ImageURL = "http://dotnethow.net/images/towns/town-3.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            StartTime = new TimeSpan(21, 0, 0),
-                            EventId = 3,
-                            GenreId = 3,
-                            TownCategory = TownCategory.Documentary
-                        },
-                        new Town()
-                        {
-                            Name = "The Shawshank Redemption",
-                            Description = "This is the Shawshank Redemption description",
-                            Price = 2500,
-                            ImageURL = "http://dotnethow.net/images/towns/town-1.jpeg",
-                            StartDate = DateTime.Now,
+                            ImageURL = "https://i.postimg.cc/k5dZLy9r/image.jpg",
+                            StartDate = new DateTime(2024, 5, 30, 0, 0, 0),
                             StartTime = new TimeSpan(21, 0, 0),
                             EventId = 1,
                             GenreId = 1,
-                            TownCategory = TownCategory.Action
+                            TownCategory = TownCategory.cat_21
                         },
                         new Town()
                         {
-                            Name = "Ghost",
-                            Description = "This is the Ghost town description",
+                            Name = "Санкт-Петербург",
+                            Description = "просп. Невский 30",
+                            Price = 2500,
+                            ImageURL = "https://i.postimg.cc/tJ7mFSd6/image.jpg",
+                            StartDate = new DateTime(2024, 6, 6, 0, 0, 0),
+                            StartTime = new TimeSpan(21, 0, 0),
+                            EventId = 2,
+                            GenreId = 1,
+                            TownCategory = TownCategory.cat_16
+                        },
+                        new Town()
+                        {
+                            Name = "Казань",
+                            Description = "пл. Свободы 3",
                             Price = 2300,
-                            ImageURL = "http://dotnethow.net/images/towns/town-4.jpeg",
-                            StartDate = DateTime.Now,
-                            StartTime = new TimeSpan(19, 0, 0),
-                            EventId = 4,
-                            GenreId = 4,
-                            TownCategory = TownCategory.Horror
+                            ImageURL = "https://i.postimg.cc/tCKmVzs1/image.jpg",
+                            StartDate = new DateTime(2024, 6, 12, 0, 0, 0),
+                            StartTime = new TimeSpan(20, 0, 0),
+                            EventId = 2,
+                            GenreId = 2,
+                            TownCategory = TownCategory.cat_16
                         },
                         new Town()
                         {
-                            Name = "Race",
-                            Description = "This is the Race town description",
+                            Name = "Челябинск",
+                            Description = "ул. Кирова 78",
                             Price = 2000,
-                            ImageURL = "http://dotnethow.net/images/towns/town-6.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
+                            ImageURL = "https://i.postimg.cc/W4n9CLXr/image.jpg",
+                            StartDate = new DateTime(2024, 6, 17, 0, 0, 0),
                             StartTime = new TimeSpan(20, 0, 0),
                             EventId = 1,
                             GenreId = 2,
-                            TownCategory = TownCategory.Documentary
+                            TownCategory = TownCategory.cat_18
                         },
                         new Town()
                         {
-                            Name = "Scoob",
-                            Description = "This is the Scoob town description",
+                            Name = "Тольятти",
+                            Description = "ул. Юбилейная 24",
                             Price = 2200,
-                            ImageURL = "http://dotnethow.net/images/towns/town-7.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
+                            ImageURL = "https://i.postimg.cc/wBHfwTcg/image.jpg",
+                            StartDate = new DateTime(2024, 6, 23, 0, 0, 0),
                             StartTime = new TimeSpan(18, 0, 0),
                             EventId = 1,
                             GenreId = 3,
-                            TownCategory = TownCategory.Cartoon
+                            TownCategory = TownCategory.cat_18
                         },
                         new Town()
                         {
-                            Name = "Cold Soles",
-                            Description = "This is the Cold Soles town description",
-                            Price = 1800,
-                            ImageURL = "http://dotnethow.net/images/towns/town-8.jpeg",
-                            StartDate = DateTime.Now.AddDays(3),
-                            StartTime = new TimeSpan(20, 0, 0),
+                            Name = "Владивосток",
+                            Description = "ул. Верхнепортовая 38",
+                            Price = 2000,
+                            ImageURL = "https://i.postimg.cc/XY91Ky5s/image.jpg",
+                            StartDate = new DateTime(2024, 6, 29, 0, 0, 0),
+                            StartTime = new TimeSpan(19, 0, 0),
                             EventId = 1,
-                            GenreId = 5,
-                            TownCategory = TownCategory.Drama
+                            GenreId = 3,
+                            TownCategory = TownCategory.cat_21
                         }
                     });
                     context.SaveChanges();
