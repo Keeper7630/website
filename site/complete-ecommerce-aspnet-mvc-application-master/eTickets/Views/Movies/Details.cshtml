@@ -24,33 +24,33 @@
                     <div class="card-body">
                         <p class="card-text">@Model.Description</p>
                         <p class="card-text">
-                            <b>Cinema: </b>
+                            <b>Мероприятие: </b>
                             <a asp-controller="Cinemas" asp-action="Details" asp-route-id="@Model.CinemaId">
                                 @Model.Cinema.Name
                             </a>
                         </p>
                         <p class="card-text">
-                            <b>Producer: </b>
+                            <b>Жанр: </b>
                             <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.ProducerId">
                                 @Model.Producer.FullName
                             </a>
                         </p>
-                        <p class="card-text"><b>Category: </b>@Model.MovieCategory</p>
-                        <p class="card-text"><b>Start Date: </b>@Model.StartDate.ToString("dd MMM yy")</p>
-                        <p class="card-text"><b>End Date: </b>@Model.EndDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Возрастное ограничение: </b>@Model.MovieCategory</p>
+                        <p class="card-text"><b>Дата начала: </b>@Model.StartDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Время начала: </b>@Model.EndDate.ToString("dd MMM yy")</p>
                         <p class="card-text ">
-                            <b>Status: </b>
+                            <b>В наличии: </b>
                             @if (DateTime.Now >= Model.StartDate && DateTime.Now <= Model.EndDate)
                             {
-                                <span class="badge bg-success text-white">AVAILABLE</span>
+                                <span class="badge bg-success text-white">ДА</span>
                             }
                             else if (DateTime.Now > Model.EndDate)
                             {
-                                <span class="badge bg-danger text-white">EXPIRED</span>
+                                <span class="badge bg-danger text-white">НЕТ</span>
                             }
                             else
                             {
-                                <span class="badge bg-primary text-white">UPCOMING</span>
+                                <span class="badge bg-primary text-white">СКОРО БУДЕТ</span>
                             }
                         </p>
                         <p class="card-text">
@@ -74,11 +74,11 @@
                     <div class="card-footer">
                         <p class="card-text">
                             <a class="btn btn-outline-primary float-right" asp-action="Index">
-                                Back to List
+                                Назад
                             </a>
                             <a class="btn btn-success text-white  @((DateTime.Now > Model.EndDate) ? "disabled" : "")" 
                                asp-controller="Orders" 
-                               asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                               asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Добавить в корзину (Цена @Model.Price.ToString("c"))</a>
                         </p>
                     </div>
                 </div>

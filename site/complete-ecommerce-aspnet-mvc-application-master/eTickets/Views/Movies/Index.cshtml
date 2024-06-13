@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Movie>
 
 @{
-    ViewData["Title"] = "List of Movies";
+    ViewData["Title"] = "Blackwire Band";
 }
 
 <div class="row">
@@ -34,18 +34,18 @@
                             <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
                             <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
                             <p class="card-text ">
-                                <b>Status: </b>
+                                <b>В наличии: </b>
                                 @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
                                 {
-                                    <span class="badge bg-success text-white">AVAILABLE</span>
+                                    <span class="badge bg-success text-white">ДА</span>
                                 }
                                 else if (DateTime.Now > item.EndDate)
                                 {
-                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                    <span class="badge bg-danger text-white">НЕТ</span>
                                 }
                                 else
                                 {
-                                    <span class="badge bg-primary text-white">UPCOMING</span>
+                                    <span class="badge bg-primary text-white">СКОРО БУДЕТ</span>
                                 }
                             </p>
 
@@ -55,13 +55,16 @@
                         <div class="card-footer ">
                             <p class="card-text">
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
+                                    <i class="bi bi-eye-fill"></i> Подробнее
                                 </a>
+                                <title>
+
+                                </title>
                                 <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")" 
                                    asp-controller="Orders" 
                                    asp-action="AddItemToShoppingCart" 
                                    asp-route-id="@item.Id">
-                                <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
+                                <i class="bi bi-cart-plus"></i> Добавить в корзину (Цена @item.Price.ToString("c"))</a>
                             </p>
                         </div>
                     </div>

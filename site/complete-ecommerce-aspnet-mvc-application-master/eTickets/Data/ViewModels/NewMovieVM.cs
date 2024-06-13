@@ -13,45 +13,45 @@ namespace eTickets.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Movie name")]
-        [Required(ErrorMessage = "Name is required")]
+        [Display(Name = "Город")]
+        [Required(ErrorMessage = "Требуется ввести город")]
         public string Name { get; set; }
 
-        [Display(Name = "Movie description")]
-        [Required(ErrorMessage = "Description is required")]
+        [Display(Name = "Адрес")]
+        [Required(ErrorMessage = "Требуется ввести адрес")]
         public string Description { get; set; }
 
-        [Display(Name = "Price in $")]
-        [Required(ErrorMessage = "Price is required")]
+        [Display(Name = "Цена в Р")]
+        [Required(ErrorMessage = "Требуется ввести цену")]
         public double Price { get; set; }
 
-        [Display(Name = "Movie poster URL")]
-        [Required(ErrorMessage = "Movie poster URL is required")]
+        [Display(Name = "URL картинки")]
+        [Required(ErrorMessage = "Требуется ввести URL")]
         public string ImageURL { get; set; }
 
-        [Display(Name = "Movie start date")]
-        [Required(ErrorMessage = "Start date is required")]
+        [Display(Name = "Дата начала")]
+        [Required(ErrorMessage = "Требуется ввести дату")]
         public DateTime StartDate { get; set; }
 
-        [Display(Name = "Movie end date")]
-        [Required(ErrorMessage = "End date is required")]
+        [Display(Name = "Время начала")]
+        [Required(ErrorMessage = "Требуется ввести время")]
         public DateTime EndDate { get; set; }
 
-        [Display(Name = "Select a category")]
-        [Required(ErrorMessage = "Movie category is required")]
+        [Display(Name = "Возрастное ограничение")]
+        [Required(ErrorMessage = "Требуется ввести ограничение")]
         public MovieCategory MovieCategory { get; set; }
 
         //Relationships
-        [Display(Name = "Select actor(s)")]
-        [Required(ErrorMessage = "Movie actor(s) is required")]
+        [Display(Name = "Выбор участников")]
+        [Required(ErrorMessage = "Требуется выбрать участников")]
         public List<int> ActorIds { get; set; }
 
-        [Display(Name = "Select a cinema")]
-        [Required(ErrorMessage = "Movie cinema is required")]
+        [Display(Name = "Тип мероприятия")]
+        [Required(ErrorMessage = "Требуется указать тип")]
         public int CinemaId { get; set; }
 
-        [Display(Name = "Select a producer")]
-        [Required(ErrorMessage = "Movie producer is required")]
+        [Display(Name = "Жанр")]
+        [Required(ErrorMessage = "Требуется указать жанр")]
         public int ProducerId { get; set; }
     }
 }
