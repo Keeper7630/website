@@ -15,13 +15,13 @@ namespace eTickets.Controllers
     [Authorize] 
     public class OrdersController : Controller
     {
-        private readonly IMoviesService _moviesService;
+        private readonly ITownsService _townsService;
         private readonly ShoppingCart _shoppingCart;
         private readonly IOrdersService _ordersService;
 
-        public OrdersController(IMoviesService moviesService, ShoppingCart shoppingCart, IOrdersService ordersService)
+        public OrdersController(ITownsService townsService, ShoppingCart shoppingCart, IOrdersService ordersService)
         {
-            _moviesService = moviesService;
+            _townsService = townsService;
             _shoppingCart = shoppingCart;
             _ordersService = ordersService;
         }
@@ -51,7 +51,7 @@ namespace eTickets.Controllers
 
         public async Task<IActionResult> AddItemToShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _townsService.GetTownByIdAsync(id);
 
             if (item != null)
             {
@@ -62,7 +62,7 @@ namespace eTickets.Controllers
 
         public async Task<IActionResult> RemoveItemFromShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _townsService.GetTownByIdAsync(id);
 
             if (item != null)
             {

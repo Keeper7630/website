@@ -16,25 +16,24 @@ namespace eTickets.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Actor_Movie>().HasKey(am => new
+            modelBuilder.Entity<Member_Town>().HasKey(am => new
             {
-                am.ActorId,
-                am.MovieId
+                am.MemberId,
+                am.TownId
             });
 
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieId);
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
+            modelBuilder.Entity<Member_Town>().HasOne(m => m.Town).WithMany(am => am.Members_Towns).HasForeignKey(m => m.TownId);
+            modelBuilder.Entity<Member_Town>().HasOne(m => m.Member).WithMany(am => am.Members_Towns).HasForeignKey(m => m.MemberId);
 
 
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Actor> Actors { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Actor_Movie> Actors_Movies { get; set; }
-        public DbSet<Cinema> Cinemas { get; set; }
-        public DbSet<Producer> Producers { get; set; }
-
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Town> Towns { get; set; }
+        public DbSet<Member_Town> Members_Towns { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
         //Orders related tables
         public DbSet<Order> Orders { get; set; }

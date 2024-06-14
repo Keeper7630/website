@@ -8,7 +8,7 @@ namespace eTickets.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "ProfilePictureURL",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -18,7 +18,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FullName",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -29,7 +29,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Bio",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -39,7 +39,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -49,7 +49,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Logo",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -59,7 +59,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -69,7 +69,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ProfilePictureURL",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -79,7 +79,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FullName",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -90,7 +90,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Bio",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -120,16 +120,16 @@ namespace eTickets.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
+                    TownId = table.Column<int>(type: "int", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_OrderItems_Towns_TownId",
+                        column: x => x.TownId,
+                        principalTable: "Towns",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -141,9 +141,9 @@ namespace eTickets.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_MovieId",
+                name: "IX_OrderItems_TownId",
                 table: "OrderItems",
-                column: "MovieId");
+                column: "TownId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
@@ -161,7 +161,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ProfilePictureURL",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -169,7 +169,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FullName",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -178,7 +178,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Bio",
-                table: "Producers",
+                table: "Genres",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -186,7 +186,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -194,7 +194,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Logo",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -202,7 +202,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "Cinemas",
+                table: "Events",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -210,7 +210,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ProfilePictureURL",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -218,7 +218,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FullName",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -227,7 +227,7 @@ namespace eTickets.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Bio",
-                table: "Actors",
+                table: "Members",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),

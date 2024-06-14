@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Town>
+
+@{
+    ViewData["Title"] = "Blackwire Band";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Name
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.ImageURL" width="100%" alt="@item.Name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text"><b>Мероприятие: </b>@item.Event.Name</p>
+                            <p class="card-text"><b>Возрастное ограничение: </b>@item.TownCategory</p>
+                            <p class="card-text"><b>Дата начала: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>Время начала: </b>@item.StartTime.ToString(@"hh\:mm\:ss")</p>
+                            <p class="card-text ">
+                                <b>В наличии: </b>
+                                @if (DateTime.Now < item.StartDate)
+                                {
+                                    <span class="badge bg-success text-white">ДА</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger text-white">НЕТ</span>
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Подробнее
+                                </a>
+                                <a class="btn btn-success text-white @((DateTime.Now >= item.StartDate) ? "disabled" : "")" 
+                                   asp-controller="Orders" 
+                                   asp-action="AddItemToShoppingCart" 
+                                   asp-route-id="@item.Id">
+                                <i class="bi bi-cart-plus"></i> Добавить в корзину (Цена @item.Price.ToString("c"))</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Towns") 

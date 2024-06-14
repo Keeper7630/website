@@ -12,7 +12,7 @@ namespace eTickets.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MovieId = table.Column<int>(type: "int", nullable: true),
+                    TownId = table.Column<int>(type: "int", nullable: true),
                     Amount = table.Column<int>(type: "int", nullable: false),
                     ShoppingCartId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -20,17 +20,17 @@ namespace eTickets.Migrations
                 {
                     table.PrimaryKey("PK_ShoppingCartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingCartItems_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_ShoppingCartItems_Towns_TownId",
+                        column: x => x.TownId,
+                        principalTable: "Towns",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCartItems_MovieId",
+                name: "IX_ShoppingCartItems_TownId",
                 table: "ShoppingCartItems",
-                column: "MovieId");
+                column: "TownId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

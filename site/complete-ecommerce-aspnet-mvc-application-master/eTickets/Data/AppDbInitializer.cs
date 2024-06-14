@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace eTickets.Data
 {
@@ -20,299 +21,275 @@ namespace eTickets.Data
 
                 context.Database.EnsureCreated();
 
-                //Cinema
-                if (!context.Cinemas.Any())
+                //Event
+                if (!context.Events.Any())
                 {
-                    context.Cinemas.AddRange(new List<Cinema>()
+                    context.Events.AddRange(new List<Event>()
                     {
-                        new Cinema()
+                        new Event()
                         {
-                            Name = "Cinema 1",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Name = "Концерт",
+                            Logo = "https://i.postimg.cc/9MwW1pY6/image.jpg",
+                            Description = "Публичное исполнение музыкальных произведений по определённой, заранее составленной, программе."
                         },
-                        new Cinema()
+                        new Event()
                         {
-                            Name = "Cinema 2",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Name = "Акустический концерт",
+                            Logo = "https://i.postimg.cc/Qt73cMXs/image.jpg",
+                            Description = "Концерт, в котором звучит только музыка, которую можно воспроизвести с помощью акустических инструментов или живого голоса."
                         },
-                        new Cinema()
+                        new Event()
                         {
-                            Name = "Cinema 3",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
-                            Description = "This is the description of the first cinema"
-                        },
-                        new Cinema()
-                        {
-                            Name = "Cinema 4",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
-                            Description = "This is the description of the first cinema"
-                        },
-                        new Cinema()
-                        {
-                            Name = "Cinema 5",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Name = "Фестиваль",
+                            Logo = "https://i.postimg.cc/52PbVG7c/image.jpg",
+                            Description = "Мероприятие, ориентированное на проведение различных музыкальных выступлений и демонстрацию инструментального мастерства."
                         },
                     });
                     context.SaveChanges();
                 }
-                //Actors
-                if (!context.Actors.Any())
+                //Members
+                if (!context.Members.Any())
                 {
-                    context.Actors.AddRange(new List<Actor>()
+                    context.Members.AddRange(new List<Member>()
                     {
-                        new Actor()
+                        new Member()
                         {
-                            FullName = "Actor 1",
-                            Bio = "This is the Bio of the first actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                            FullName = "Мануилиди Мария",
+                            Bio = "Ритм/лид гитарист, играет 5 лет. Основатель группы Blackwire.",
+                            ProfilePictureURL = "https://i.postimg.cc/RFKHGwwY/msg730438509-27716.jpg"
 
                         },
-                        new Actor()
+                        new Member()
                         {
-                            FullName = "Actor 2",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
+                            FullName = "Капулер Дмитрий",
+                            Bio = "Клавишник, опыт игры - 5 лет. Частный преподаватель фортепиано.",
+                            ProfilePictureURL = "https://i.postimg.cc/brd1m4Bz/image.jpg"
                         },
-                        new Actor()
+                        new Member()
                         {
-                            FullName = "Actor 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-3.jpeg"
+                            FullName = "Денисова Дарья",
+                            Bio = "Барабанщица, играет 4 года.",
+                            ProfilePictureURL = "https://i.postimg.cc/tTBht9DS/image.jpg"
                         },
-                        new Actor()
+                        new Member()
                         {
-                            FullName = "Actor 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-4.jpeg"
+                            FullName = "Едина Млада",
+                            Bio = "Бас-гитарист, играет 3 года. Новый участник группы.",
+                            ProfilePictureURL = "https://i.postimg.cc/nVdkqGPF/image.jpg"
                         },
-                        new Actor()
+                        new Member()
                         {
-                            FullName = "Actor 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-5.jpeg"
+                            FullName = "Мартиросян Карина",
+                            Bio = "Сессионный вокалист, близкий друг группы.",
+                            ProfilePictureURL = "https://i.postimg.cc/bNsRgS7Q/image.jpg"
+                        },
+                    });
+                    context.SaveChanges();
+                }
+                //Genres
+                if (!context.Genres.Any())
+                {
+                    context.Genres.AddRange(new List<Genre>()
+                    {
+                        new Genre()
+                        {
+                            FullName = "Рок",
+                            Bio = "Ряд направлений популярной музыки",
+                            ProfilePictureURL = "https://i.postimg.cc/3RTrwpTm/image.jpg"
+
+                        },
+                        new Genre()
+                        {
+                            FullName = "Инди-рок",
+                            Bio = "Широкий диапазон музыкантов и стилей, объединённых причастностью к контркультуре и имеющих отношение к рок-музыке.",
+                            ProfilePictureURL = "https://i.postimg.cc/k5x9L4b4/image.jpg"
+                        },
+                        new Genre()
+                        {
+                            FullName = "Экспериментальная музыка",
+                            Bio = "Музыкальные произведения, использующие необычный инструментарий или новые композиционные принципы.",
+                            ProfilePictureURL = "https://i.postimg.cc/xT0kRwBM/image.jpg"
+                        },
+                    });
+                    context.SaveChanges();
+                }
+                //Towns
+                if (!context.Towns.Any())
+                {
+                    context.Towns.AddRange(new List<Town>()
+                    {
+                        new Town()
+                        {
+                            Name = "Москва",
+                            Description = "просп. Андропова 1",
+                            Price = 2500,
+                            ImageURL = "https://i.postimg.cc/k5dZLy9r/image.jpg",
+                            StartDate = new DateTime(2024, 5, 30, 0, 0, 0),
+                            StartTime = new TimeSpan(21, 0, 0),
+                            EventId = 1,
+                            GenreId = 1,
+                            TownCategory = TownCategory.cat_21
+                        },
+                        new Town()
+                        {
+                            Name = "Санкт-Петербург",
+                            Description = "просп. Невский 30",
+                            Price = 2500,
+                            ImageURL = "https://i.postimg.cc/tJ7mFSd6/image.jpg",
+                            StartDate = new DateTime(2024, 6, 6, 0, 0, 0),
+                            StartTime = new TimeSpan(21, 0, 0),
+                            EventId = 2,
+                            GenreId = 1,
+                            TownCategory = TownCategory.cat_16
+                        },
+                        new Town()
+                        {
+                            Name = "Казань",
+                            Description = "пл. Свободы 3",
+                            Price = 2300,
+                            ImageURL = "https://i.postimg.cc/tCKmVzs1/image.jpg",
+                            StartDate = new DateTime(2024, 6, 12, 0, 0, 0),
+                            StartTime = new TimeSpan(20, 0, 0),
+                            EventId = 2,
+                            GenreId = 2,
+                            TownCategory = TownCategory.cat_16
+                        },
+                        new Town()
+                        {
+                            Name = "Челябинск",
+                            Description = "ул. Кирова 78",
+                            Price = 2000,
+                            ImageURL = "https://i.postimg.cc/W4n9CLXr/image.jpg",
+                            StartDate = new DateTime(2024, 6, 17, 0, 0, 0),
+                            StartTime = new TimeSpan(20, 0, 0),
+                            EventId = 1,
+                            GenreId = 2,
+                            TownCategory = TownCategory.cat_18
+                        },
+                        new Town()
+                        {
+                            Name = "Тольятти",
+                            Description = "ул. Юбилейная 24",
+                            Price = 2200,
+                            ImageURL = "https://i.postimg.cc/wBHfwTcg/image.jpg",
+                            StartDate = new DateTime(2024, 6, 23, 0, 0, 0),
+                            StartTime = new TimeSpan(18, 0, 0),
+                            EventId = 1,
+                            GenreId = 3,
+                            TownCategory = TownCategory.cat_18
+                        },
+                        new Town()
+                        {
+                            Name = "Владивосток",
+                            Description = "ул. Верхнепортовая 38",
+                            Price = 2000,
+                            ImageURL = "https://i.postimg.cc/XY91Ky5s/image.jpg",
+                            StartDate = new DateTime(2024, 6, 29, 0, 0, 0),
+                            StartTime = new TimeSpan(19, 0, 0),
+                            EventId = 1,
+                            GenreId = 3,
+                            TownCategory = TownCategory.cat_21
                         }
                     });
                     context.SaveChanges();
                 }
-                //Producers
-                if (!context.Producers.Any())
+                //Members & Towns
+                if (!context.Members_Towns.Any())
                 {
-                    context.Producers.AddRange(new List<Producer>()
+                    context.Members_Towns.AddRange(new List<Member_Town>()
                     {
-                        new Producer()
+                        new Member_Town()
                         {
-                            FullName = "Producer 1",
-                            Bio = "This is the Bio of the first actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
-
+                            MemberId = 1,
+                            TownId = 1
                         },
-                        new Producer()
+                        new Member_Town()
                         {
-                            FullName = "Producer 2",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-2.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-3.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-4.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-5.jpeg"
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Movies
-                if (!context.Movies.Any())
-                {
-                    context.Movies.AddRange(new List<Movie>()
-                    {
-                        new Movie()
-                        {
-                            Name = "Life",
-                            Description = "This is the Life movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(10),
-                            CinemaId = 3,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Documentary
-                        },
-                        new Movie()
-                        {
-                            Name = "The Shawshank Redemption",
-                            Description = "This is the Shawshank Redemption description",
-                            Price = 29.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(3),
-                            CinemaId = 1,
-                            ProducerId = 1,
-                            MovieCategory = MovieCategory.Action
-                        },
-                        new Movie()
-                        {
-                            Name = "Ghost",
-                            Description = "This is the Ghost movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(7),
-                            CinemaId = 4,
-                            ProducerId = 4,
-                            MovieCategory = MovieCategory.Horror
-                        },
-                        new Movie()
-                        {
-                            Name = "Race",
-                            Description = "This is the Race movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-5),
-                            CinemaId = 1,
-                            ProducerId = 2,
-                            MovieCategory = MovieCategory.Documentary
-                        },
-                        new Movie()
-                        {
-                            Name = "Scoob",
-                            Description = "This is the Scoob movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-2),
-                            CinemaId = 1,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Cartoon
-                        },
-                        new Movie()
-                        {
-                            Name = "Cold Soles",
-                            Description = "This is the Cold Soles movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
-                            StartDate = DateTime.Now.AddDays(3),
-                            EndDate = DateTime.Now.AddDays(20),
-                            CinemaId = 1,
-                            ProducerId = 5,
-                            MovieCategory = MovieCategory.Drama
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Actors & Movies
-                if (!context.Actors_Movies.Any())
-                {
-                    context.Actors_Movies.AddRange(new List<Actor_Movie>()
-                    {
-                        new Actor_Movie()
-                        {
-                            ActorId = 1,
-                            MovieId = 1
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 1
+                            MemberId = 3,
+                            TownId = 1
                         },
 
-                         new Actor_Movie()
+                         new Member_Town()
                         {
-                            ActorId = 1,
-                            MovieId = 2
+                            MemberId = 1,
+                            TownId = 2
                         },
-                         new Actor_Movie()
+                         new Member_Town()
                         {
-                            ActorId = 4,
-                            MovieId = 2
+                            MemberId = 4,
+                            TownId = 2
                         },
 
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 1,
-                            MovieId = 3
+                            MemberId = 1,
+                            TownId = 3
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 2,
-                            MovieId = 3
+                            MemberId = 2,
+                            TownId = 3
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 5,
-                            MovieId = 3
+                            MemberId = 5,
+                            TownId = 3
                         },
 
 
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 2,
-                            MovieId = 4
+                            MemberId = 2,
+                            TownId = 4
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 3,
-                            MovieId = 4
+                            MemberId = 3,
+                            TownId = 4
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 4,
-                            MovieId = 4
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorId = 2,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 4,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 5,
-                            MovieId = 5
+                            MemberId = 4,
+                            TownId = 4
                         },
 
 
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 3,
-                            MovieId = 6
+                            MemberId = 2,
+                            TownId = 5
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 4,
-                            MovieId = 6
+                            MemberId = 3,
+                            TownId = 5
                         },
-                        new Actor_Movie()
+                        new Member_Town()
                         {
-                            ActorId = 5,
-                            MovieId = 6
+                            MemberId = 4,
+                            TownId = 5
+                        },
+                        new Member_Town()
+                        {
+                            MemberId = 5,
+                            TownId = 5
+                        },
+
+
+                        new Member_Town()
+                        {
+                            MemberId = 3,
+                            TownId = 6
+                        },
+                        new Member_Town()
+                        {
+                            MemberId = 4,
+                            TownId = 6
+                        },
+                        new Member_Town()
+                        {
+                            MemberId = 5,
+                            TownId = 6
                         },
                     });
                     context.SaveChanges();

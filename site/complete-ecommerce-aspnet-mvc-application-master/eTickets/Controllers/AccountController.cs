@@ -49,14 +49,14 @@ namespace eTickets.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Movies");
+                        return RedirectToAction("Index", "Towns");
                     }
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                TempData["Error"] = "Неверные данные. Пожалуйста, попробуйте ещё раз!";
                 return View(loginVM);
             }
 
-            TempData["Error"] = "Wrong credentials. Please, try again!";
+            TempData["Error"] = "Неверные данные. Пожалуйста, попробуйте ещё раз!";
             return View(loginVM);
         }
 
@@ -71,7 +71,7 @@ namespace eTickets.Controllers
             var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
             if(user != null)
             {
-                TempData["Error"] = "This email address is already in use";
+                TempData["Error"] = "Этот адрес электронной почты уже используется";
                 return View(registerVM);
             }
 
@@ -93,7 +93,7 @@ namespace eTickets.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Movies");
+            return RedirectToAction("Index", "Towns");
         }
 
         public IActionResult AccessDenied(string ReturnUrl)

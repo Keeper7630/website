@@ -1,0 +1,84 @@
+﻿@model Town
+
+@{
+    ViewData["Title"] = "Town details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.Name
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.ImageURL" width="100%" alt="@Model.Name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text">
+                            <b>Мероприятие: </b>
+                            <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.EventId">
+                                @Model.Event.Name
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Жанр: </b>
+                            <a asp-controller="Genres" asp-action="Details" asp-route-id="@Model.GenreId">
+                                @Model.Genre.FullName
+                            </a>
+                        </p>
+                        <p class="card-text"><b>Возрастное ограничение: </b>@Model.TownCategory</p>
+                        <p class="card-text"><b>Дата начала: </b>@Model.StartDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Время начала: </b>@Model.StartTime.ToString(@"hh\:mm\:ss")</p>
+                        <p class="card-text ">
+                            <b>В наличии: </b>
+                            @if (DateTime.Now < Model.StartDate)
+                            {
+                                <span class="badge bg-success text-white">ДА</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger text-white">НЕТ</span>
+                            }
+                        </p>
+                        <p class="card-text">
+                            <b>Участники: </b>
+                            <hr />
+                            <div class="row">
+                                @foreach (var member in Model.Members_Towns)
+                                {
+                                    <div class="column text-center">
+                                        <img class="border-info rounded-circle" src="@member.Member.ProfilePictureURL" style="max-width: 150px" />
+                                        <br />
+                                        <a asp-controller="Members" asp-action="Details" asp-route-id="@member.MemberId">@member.Member.FullName</a>
+                                    </div>
+                                }
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                Назад
+                            </a>
+                            <a class="btn btn-success text-white  @((DateTime.Now >= Model.StartDate) ? "disabled" : "")" 
+                               asp-controller="Orders" 
+                               asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Добавить в корзину (Цена @Model.Price.ToString("c"))</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ namespace eTickets.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Actors",
+                name: "Members",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -19,11 +19,11 @@ namespace eTickets.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Actors", x => x.Id);
+                    table.PrimaryKey("PK_Members", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cinemas",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,7 @@ namespace eTickets.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cinemas", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,7 +53,7 @@ namespace eTickets.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movies",
+                name: "Towns",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -63,81 +63,81 @@ namespace eTickets.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieCategory = table.Column<int>(type: "int", nullable: false),
-                    CinemaId = table.Column<int>(type: "int", nullable: false),
-                    ProducerId = table.Column<int>(type: "int", nullable: false)
+                    StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    TownCategory = table.Column<int>(type: "int", nullable: false),
+                    EventId = table.Column<int>(type: "int", nullable: false),
+                    GenreId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.PrimaryKey("PK_Towns", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Cinemas_CinemaId",
-                        column: x => x.CinemaId,
-                        principalTable: "Cinemas",
+                        name: "FK_Towns_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Movies_Prducers_ProducerId",
-                        column: x => x.ProducerId,
+                        name: "FK_Towns_Prducers_GenreId",
+                        column: x => x.GenreId,
                         principalTable: "Prducers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Actors_Movies",
+                name: "Members_Towns",
                 columns: table => new
                 {
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    ActorId = table.Column<int>(type: "int", nullable: false)
+                    TownId = table.Column<int>(type: "int", nullable: false),
+                    MemberId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Actors_Movies", x => new { x.ActorId, x.MovieId });
+                    table.PrimaryKey("PK_Members_Towns", x => new { x.MemberId, x.TownId });
                     table.ForeignKey(
-                        name: "FK_Actors_Movies_Actors_ActorId",
-                        column: x => x.ActorId,
-                        principalTable: "Actors",
+                        name: "FK_Members_Towns_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Actors_Movies_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_Members_Towns_Towns_TownId",
+                        column: x => x.TownId,
+                        principalTable: "Towns",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Actors_Movies_MovieId",
-                table: "Actors_Movies",
-                column: "MovieId");
+                name: "IX_Members_Towns_TownId",
+                table: "Members_Towns",
+                column: "TownId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movies_CinemaId",
-                table: "Movies",
-                column: "CinemaId");
+                name: "IX_Towns_EventId",
+                table: "Towns",
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movies_ProducerId",
-                table: "Movies",
-                column: "ProducerId");
+                name: "IX_Towns_GenreId",
+                table: "Towns",
+                column: "GenreId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Actors_Movies");
+                name: "Members_Towns");
 
             migrationBuilder.DropTable(
-                name: "Actors");
+                name: "Members");
 
             migrationBuilder.DropTable(
-                name: "Movies");
+                name: "Towns");
 
             migrationBuilder.DropTable(
-                name: "Cinemas");
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "Prducers");
